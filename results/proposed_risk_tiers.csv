@@ -1,0 +1,4 @@
+band,posts,actual_at_risk,share_of_test_posts,observed_at_risk_rate
+Low (<0.33),1392,74,0.49,0.053
+Moderate (0.33-0.67),228,115,0.08,0.504
+High (>0.67),1218,1165,0.429,0.956

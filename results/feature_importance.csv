@@ -1,0 +1,14 @@
+feature,lr_standardised_coef,xgb_importance
+exclamation_rate,-0.1409,0.2373
+vader_neg,0.5451,0.231
+distress_term_rate,0.4064,0.0963
+vader_compound,-0.8764,0.0694
+first_person_rate,0.6326,0.0556
+negation_rate,0.4558,0.051
+avg_word_length,0.0464,0.0396
+vader_neu,-0.4366,0.0386
+log_word_count,0.3343,0.0386
+question_rate,0.2431,0.0366
+absolutist_rate,0.2788,0.0362
+uppercase_ratio,-0.0416,0.0359
+vader_pos,-0.0554,0.034

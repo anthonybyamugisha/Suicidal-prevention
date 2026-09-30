@@ -1,0 +1,4 @@
+model=XGBoost feature_set=TF-IDF + sentiment + linguistic
+TN=1384 FP=100 FN=123 TP=1231
+missed at-risk (false negative rate) = 0.091
+false alarms (false positive rate)   = 0.067

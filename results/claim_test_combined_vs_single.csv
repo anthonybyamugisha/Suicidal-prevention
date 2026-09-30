@@ -1,0 +1,10 @@
+model,combined,baseline,delta_f1,ci_low,ci_high,ci_excludes_zero
+Logistic Regression,Sentiment + linguistic,Sentiment only,0.0308,0.019,0.0421,True
+Logistic Regression,Sentiment + linguistic,Linguistic only,0.0754,0.0562,0.0925,True
+Logistic Regression,TF-IDF + sentiment + linguistic,TF-IDF text only,-0.0121,-0.0214,-0.0026,True
+Random Forest,Sentiment + linguistic,Sentiment only,0.0694,0.0549,0.0848,True
+Random Forest,Sentiment + linguistic,Linguistic only,0.0619,0.0457,0.0781,True
+Random Forest,TF-IDF + sentiment + linguistic,TF-IDF text only,-0.0007,-0.0116,0.011,False
+XGBoost,Sentiment + linguistic,Sentiment only,0.0594,0.0444,0.0741,True
+XGBoost,Sentiment + linguistic,Linguistic only,0.0733,0.0582,0.0885,True
+XGBoost,TF-IDF + sentiment + linguistic,TF-IDF text only,0.0237,0.013,0.0344,True

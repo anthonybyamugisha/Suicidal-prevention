@@ -1,0 +1,16 @@
+feature_set,model,accuracy,precision,recall,recall_ci_low,recall_ci_high,f1,f1_ci_low,f1_ci_high,auc
+Sentiment only,Logistic Regression,0.7882,0.7948,0.7496,0.7254,0.7727,0.7716,0.7527,0.7889,0.8626
+Sentiment only,Random Forest,0.7879,0.7793,0.7747,0.7519,0.7974,0.777,0.7605,0.7932,0.8632
+Sentiment only,XGBoost,0.7967,0.785,0.7903,0.7683,0.8125,0.7876,0.772,0.804,0.8687
+Linguistic only,Logistic Regression,0.7428,0.7364,0.7179,0.694,0.7421,0.727,0.7081,0.745,0.8007
+Linguistic only,Random Forest,0.7939,0.7825,0.7866,0.7644,0.8086,0.7845,0.7676,0.8004,0.8721
+Linguistic only,XGBoost,0.7851,0.7772,0.7703,0.7492,0.7921,0.7737,0.7562,0.7908,0.8715
+Sentiment + linguistic,Logistic Regression,0.8147,0.8165,0.7888,0.768,0.8105,0.8024,0.7867,0.8192,0.8891
+Sentiment + linguistic,Random Forest,0.8538,0.848,0.8449,0.8257,0.8636,0.8465,0.8316,0.861,0.9314
+Sentiment + linguistic,XGBoost,0.8541,0.8476,0.8464,0.8272,0.866,0.847,0.8321,0.8614,0.9325
+TF-IDF text only,Logistic Regression,0.9257,0.9468,0.8944,0.8777,0.9106,0.9199,0.9092,0.9301,0.977
+TF-IDF text only,Random Forest,0.9059,0.9096,0.8914,0.8754,0.9088,0.9004,0.8887,0.9126,0.9593
+TF-IDF text only,XGBoost,0.9013,0.9235,0.8648,0.8462,0.8822,0.8932,0.881,0.9051,0.9659
+TF-IDF + sentiment + linguistic,Logistic Regression,0.9133,0.9216,0.8944,0.8775,0.9108,0.9078,0.8967,0.9189,0.9725
+TF-IDF + sentiment + linguistic,Random Forest,0.9052,0.9082,0.8914,0.8744,0.9074,0.8997,0.888,0.9108,0.9714
+TF-IDF + sentiment + linguistic,XGBoost,0.9214,0.9249,0.9092,0.8934,0.9245,0.9169,0.9057,0.9281,0.9782

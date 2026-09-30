@@ -1,0 +1,22 @@
+{
+  "source_file": "Suicidal Ideation Detection Reddit Dataset-Version 2.csv",
+  "text_column": "Post",
+  "label_column": "Label",
+  "at_risk_labels": [
+    "Suicidal"
+  ],
+  "not_at_risk_labels": [
+    "Non-Suicidal"
+  ],
+  "rows_read": 14243,
+  "duplicates_removed": 9,
+  "posts_used": 14187,
+  "at_risk_share": 0.4771,
+  "train_size": 11349,
+  "test_size": 2838,
+  "split": "stratified 80/20",
+  "seed": 42,
+  "tfidf": "1-2 grams, 10,000 features, English stop words removed",
+  "bootstrap_resamples": 1000,
+  "best_model_full_features": "XGBoost"
+}

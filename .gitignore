@@ -1,0 +1,51 @@
+# ---- virtual environments -------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# ---- downloaded data (re-fetch with the command in README.md) -------------
+# The Mendeley Reddit dataset is ~17 MB and is not ours to version.
+data/
+
+# ---- regenerable figure output --------------------------------------------
+# experiments.py writes results/*.png and make_poster_figures.py writes
+# results/poster_figs/ - both are reproducible from the scripts.
+results/*.png
+results/poster_figs/
+
+# ---- study record is KEPT on purpose --------------------------------------
+# results/*.csv, results/*.json and results/*.txt are small and are the
+# evidence behind every number on the poster, so they are tracked.
+# If your repository must stay byte-minimal, delete the three negations below.
+
+# ---- Office / PDF lock files ----------------------------------------------
+~$*.pptx
+~$*.docx
+~$*.xlsx
+~$*
+.~lock.*
+
+# ---- Python bytecode / build artefacts ------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- notebooks -------------------------------------------------------------
+.ipynb_checkpoints/
+
+# ---- editors and OS --------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
