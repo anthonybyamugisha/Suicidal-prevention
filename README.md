@@ -126,30 +126,62 @@ Takes ~8 minutes. Auto-detects the text and label columns if you omit the flags;
 `--max-rows` caps the sample for a faster laptop run, and `--seed` controls
 reproducibility. Everything is written to `./results/`.
 
-### 2. Render print-resolution figures
+### 2. Render the conference-poster charts (final deliverable)
 
 ```powershell
-.\.venv\Scripts\python.exe make_poster_figures.py
+.\.venv\Scripts\python.exe make_results_charts.py
 ```
 
-Six figures at 300 dpi sized to their final physical size on A0, with type
-scaled for reading at 1–3 m. → `results/poster_figs/`
+The four charts the poster uses — ablation with 95% CI error bars, model
+comparison (precision / recall / F1 / AUC), confusion matrix for the best
+model, and XGBoost feature importance — each rendered at exactly
+52.0 × 16.5 cm, 300 dpi, in red-shade palette that matches the poster theme
+(shades: rose / crimson / deep maroon). → `results/poster_figs/`
 
-### 3. Build the poster
+(Legacy A0 art remains available via `make_poster_figures.py`, six figures at
+300 dpi sized to the old A0 portrait scaffold.)
+
+### 3. Build the 140 × 90 cm landscape poster
+
+```powershell
+.\.venv\Scripts\python.exe build_poster_landscape.py poster_140x90.pptx
+```
+
+The congress-template poster, redesigned around a red design system (no
+summary cards) and resized to the URI / ASME / SIAM typography standards
+(title 80 pt, headings 30–38 pt, body 28–34 pt, references 20 pt): four-tone
+maroon header with clean text logo lockup; an 80 pt title, 30 pt author line;
+a full-height left column (Introduction, Aims and objectives, Method); a large
+Results panel in which the four charts are the hero, plus a small honesty
+footnote; a tall bottom row Conclusions | Recommendation | References + Contact
+that the larger type fills to the bottom margin. Section headings are clean
+maroon strips with a gold tick and crimson accents; panels sit on a warm grey
+canvas.
+
+All prose is the author's supplied wording, placed verbatim. Every number on
+the Results area (honesty footnote, strongest-model note, provenance line) is
+read from `results/` at build time — none are hard-coded — so the poster can
+never drift out of sync with the study output.
+
+```powershell
+.\.venv\Scripts\python.exe verify_poster_landscape.py poster_140x90.pptx
+```
+
+Verifies slide size, panel geometry/no overlaps, figure size and DPI,
+verbatim text presence, the numbers against the CSVs, font sizes, and
+per-paragraph overflow estimates.
+
+Open in PowerPoint, check, then **File → Export → Create PDF/XPS** (or
+*Save As → PDF*) with *embed fonts* ticked.
+
+> Close the file in PowerPoint before rebuilding — PowerPoint holds a lock on
+> open documents and the save fails with `PermissionError`.
+
+### 3b. (Legacy) A0 portrait scaffold — superseded
 
 ```powershell
 .\.venv\Scripts\python.exe build_poster.py poster_A0.pptx
 ```
-
-A0 portrait (84.1 × 118.9 cm), 3 columns, editable. Every number in the captions
-and the results table is read from `results/metrics_all.csv` at build time, so
-prose cannot drift out of sync with the study output.
-
-Open in PowerPoint, fill the 8 boxes marked `PLACEHOLDER`, then
-**File → Export → Create PDF/XPS** (or *Save As → PDF*) with *embed fonts* ticked.
-
-> Close the file in PowerPoint before rebuilding — PowerPoint holds a lock on
-> open documents and the save fails with `PermissionError`.
 
 ---
 
@@ -220,9 +252,13 @@ Subreddit boilerplate was checked and is **not** a confound: the literal string
 
 ```
 experiments.py               the whole study: load -> clean -> features -> 15 runs -> CIs -> claim test
-make_poster_figures.py       re-render the 6 figures at 300 dpi for A0 print
-build_poster.py              assemble the A0 portrait .pptx
-poster_A0.pptx               the poster (editable; PLACEHOLDER boxes awaiting your text)
+make_results_charts.py       the 4 conference charts (52 x 14.2 cm, 300 dpi) used by the poster
+build_poster_landscape.py    build the final 140 x 90 cm landscape poster .pptx
+verify_poster_landscape.py   geometry / text / number / font / overflow checks on the poster
+make_poster_figures.py       legacy: re-render the 6 figures at 300 dpi for the A0 scaffold
+build_poster.py              legacy: assemble the A0 portrait scaffold .pptx
+poster_140x90.pptx           the conference poster (final deliverable, editable)
+poster_A0.pptx               legacy A0 portrait scaffold
 data/                        Mendeley dataset (gitignored — see Fetching it)
 results/                     study record; CSVs tracked, PNGs gitignored
 ```
@@ -234,5 +270,5 @@ results/                     study record; CSVs tracked, PNGs gitignored
 - The bootstrap reuses one RNG sequentially across metrics and models, so the
   CIs are correlated with each other. Fine for reporting, but they are not
   independent samples.
-- Nothing here is committed yet. If you run `git add .`, the 12 MB dataset and
-  `.venv/` are already excluded by `.gitignore`.
+- The 12 MB dataset and `.venv/` are excluded by `.gitignore`; `results/`
+  CSVs/JSON/TXT and the scripts are tracked.
