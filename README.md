@@ -46,6 +46,13 @@ honestly as a negative.
 alone (F1 0.847 vs 0.788 / 0.784; 6/6 bootstrap CIs exclude zero) — but adds
 little on top of raw text.
 
+On the strongest configuration (XGBoost, all features, held-out test set
+n = 2,838): precision 0.925, recall 0.909 [0.893, 0.925], F1 0.917
+[0.906, 0.928], AUC 0.978. Confusion matrix TN 1,384 / FP 100 / FN 123 /
+TP 1,231 — that is a **9.1% false-negative rate** (share of at-risk posts
+missed) against a **6.7% false-positive rate**. Uncertainty throughout is a
+1000-resample bootstrap.
+
 Note that "best model" is a **tie, not a win**: XGBoost on all features scores
 F1 0.917 [0.906, 0.928], while TF-IDF-only Logistic Regression scores
 **0.920** [0.909, 0.930]. The CIs overlap almost completely. The claim test
